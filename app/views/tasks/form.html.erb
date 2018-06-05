@@ -1,0 +1,10 @@
+<h1>Add a Task</h1>
+<% form_for[@list, @task] do |f| %>
+<%= f.label :title %>
+<%= f.text_area :title, required:true %>
+<br/>
+<%= f.label :priority %>
+<%= f.text_area :priority, required:true %>
+<br/>
+<%= f.submit %>
+<% end %>

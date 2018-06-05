@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :List
+  belongs_to :list
   validates :body, presence: true
 
   def self.by_body

@@ -1,5 +1,5 @@
 class List < ApplicationRecord
-  belongs_to :Board
+  belongs_to :board
   has_many :tasks
   validates :title, presence: true
 

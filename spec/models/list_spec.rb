@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-Rspec.describe List :type, :model do
+RSpec.describe List, type: :model do
   describe 'attributes' do
   [:title, :priority].each {|attr| it {should respond_to attr}}
   end
@@ -11,15 +11,17 @@ Rspec.describe List :type, :model do
 
   describe 'methods' do
     before(:each) do
-      @list1 = List.create(title: 'Disney Cruise', priority: 4)
-      @list2 = List.create(title: 'Get Venue', priority: 1)
-      @list3 = List.create(title: 'Dogs Shots', priority: 3)
-      @list4 = List.create(title: 'Painting House', priority: 2)
+      @board = Board.create(name: 'vacation', color: 'red', priority: 2)
+
+      @list1 = List.create(title: 'Disney Cruise', priority: 4, board_id: @board.id)
+      @list2 = List.create(title: 'Get Venue', priority: 1, board_id: @board.id)
+      @list3 = List.create(title: 'Dogs Shots', priority: 3, board_id: @board.id)
+      @list4 = List.create(title: 'Painting House', priority: 2, board_id: @board.id)
     end
 
     it 'order list titles from a to z' do
-      @lists = List.by_title
-      expect(@lists).to eq([@list1, @list3, @list2, @list4])
+      lists = List.by_title
+      expect(lists).to eq([@list1, @list3, @list2, @list4])
     end
 
     # it 'order list titles by z to a' do

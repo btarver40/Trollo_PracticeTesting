@@ -1,0 +1,13 @@
+<h1><%= @board.id ? 'Edit Board' : 'Create Board' %></h1>
+<%= form_for @board do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name, required: true, autofocus: true %>
+<br/>
+<%= f.label :color %>
+<%= f.text_field :color, required: true%>
+<br/>
+<%= f.label :priority %>
+<%= f.text_field :priority, required: true%>
+
+  <%= f.submit %>
+<% end %>

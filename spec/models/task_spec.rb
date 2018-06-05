@@ -11,18 +11,20 @@ RSpec.describe Task, type: :model do
 
   describe 'methods' do
     before(:each) do
-      @task1 = Task.create(body: 'Need passports!', priority: 1)
-      @task2 = Task.create(body: 'Get marriage license', priority: 3)
-      @task3 = Task.create(body: 'Go to Petsmart', priority: 4)
-      @task4 = Task.create(body: 'Get paint!', priority: 2)
+      @list = List.create(title: 'note', priority: 2)
+
+      @task1 = Task.create(body: 'Need passports!', priority: 1, list_id: @list.id)
+      @task2 = Task.create(body: 'Get marriage license', priority: 3, list_id: @list.id)
+      @task3 = Task.create(body: 'Go to Petsmart', priority: 4, list_id: @list.id)
+      @task4 = Task.create(body: 'Get paint!', priority: 2, list_id: @list.id)
     end
 
-    it 'orders board names from a to z' do
+    it 'orders task names from a to z' do
       @tasks = Task.by_body
       expect(@tasks).to eq([@task2, @task4, @task3, @task1])
     end
 
-    it 'order board by priority asc' do
+    it 'order task by priority asc' do
       @tasks = Task.by_priority
       expect(@tasks).to eq([@task1, @task4, @task2, @task3])
     end
