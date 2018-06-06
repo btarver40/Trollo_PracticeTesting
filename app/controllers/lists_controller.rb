@@ -10,7 +10,7 @@ before_action :set_list, only:[:show, :edit, :update, :destroy]
   end
 
   def new
-    @list =@board.lists.new
+    @list = @board.lists.new
     render partial: 'form'
   end
 
@@ -29,7 +29,7 @@ before_action :set_list, only:[:show, :edit, :update, :destroy]
 
   def update
     if @list.update(list_params)
-      redirect_to [@board, @item]
+      redirect_to [@board, @list]
     else
       render :edit
     end

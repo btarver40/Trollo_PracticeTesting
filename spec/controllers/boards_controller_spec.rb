@@ -107,11 +107,17 @@ RSpec.describe BoardsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-  
-end
+    it "destroys the requested board" do
+      board = Board.create! valid_attributes
+      expect {
+        delete :destroy, params: {id: board.id}
+      }.to change(Board, :count).by(-1)
+    end
 
-
-
-
-
+    it "redirects the user to the board list" do 
+      board = Board.create! valid_attributes
+      delete :destroy, params: {id: board.id}
+      expect(response).to redirect_to(board)
+    end
+  end
 end
