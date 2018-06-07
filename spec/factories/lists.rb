@@ -2,6 +2,6 @@ FactoryBot.define do
   factory :list do
     title "Disney Cruise"
     priority 1
-    Board nil
+    board
   end
 end
